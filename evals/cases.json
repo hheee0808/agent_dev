@@ -1,0 +1,37 @@
+[
+  {
+    "agent": "rag",
+    "input": {"message": "MCP 프로토콜이 뭐야?"},
+    "expected_keywords": ["Model Context Protocol", "server", "client"],
+    "expected_agent": "rag",
+    "description": "RAG basic retrieval"
+  },
+  {
+    "agent": "research",
+    "input": {"message": "AI 에이전트 아키텍처 트렌드를 리서치해줘"},
+    "expected_keywords": ["ReAct", "agent", "tool"],
+    "expected_agent": "research",
+    "description": "Deep research routing + quality"
+  },
+  {
+    "agent": "curator",
+    "input": {"message": "오늘 AI 뉴스 큐레이션해줘"},
+    "expected_keywords": [],
+    "expected_agent": "curator",
+    "description": "Curator routing"
+  },
+  {
+    "agent": "direct",
+    "input": {"message": "안녕하세요"},
+    "expected_keywords": [],
+    "expected_agent": "direct",
+    "description": "Simple greeting → direct response"
+  },
+  {
+    "agent": "rag",
+    "input": {"message": "Gemini API에서 function calling은 어떻게 쓰나?"},
+    "expected_keywords": ["function", "tool"],
+    "expected_agent": "rag",
+    "description": "RAG function calling query"
+  }
+]
