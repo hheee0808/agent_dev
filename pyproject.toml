@@ -11,6 +11,7 @@ dependencies = [
     "httpx>=0.28.1",
     "pgvector>=0.5.0",
     "psycopg>=3.3.6",
+    "psycopg-binary>=3.3.6",
     "python-dotenv>=1.2.3",
     "slack-sdk>=3.44.1",
     "streamlit>=1.64.0",
