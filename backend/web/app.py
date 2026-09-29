@@ -12,8 +12,11 @@ from pydantic import BaseModel
 
 load_dotenv()
 
+from backend.agents.ci_triage.agent import CITriageAgent
 from backend.agents.curator.agent import CuratorAgent
+from backend.agents.qa_gen.agent import QAGenAgent
 from backend.agents.rag.agent import RAGAgent
+from backend.agents.research.agent import DeepResearchAgent
 from backend.common.supervisor import Supervisor
 from backend.ingest.db import ensure_schema
 from backend.scheduler import start_scheduler, stop_scheduler
@@ -21,6 +24,9 @@ from backend.scheduler import start_scheduler, stop_scheduler
 supervisor = Supervisor()
 supervisor.register(CuratorAgent())
 supervisor.register(RAGAgent())
+supervisor.register(DeepResearchAgent())
+supervisor.register(CITriageAgent())
+supervisor.register(QAGenAgent())
 
 
 @asynccontextmanager
@@ -32,6 +38,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="agent-dev", version="0.1.0", lifespan=lifespan)
+
+from backend.web.github_hook import router as github_router
+app.include_router(github_router)
 
 
 class ChatRequest(BaseModel):
